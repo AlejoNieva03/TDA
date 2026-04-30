@@ -77,7 +77,7 @@ int InsertarEnOrden(tLista* p,const void*d, unsigned tamInfo, tComp CMP, int esD
 {
     tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
     if(nue == NULL) return SIN_MEM;
-    nue->info = malloc (sizeof(tamInfo));
+    nue->info = malloc (tamInfo);
     if(nue->info == NULL)
     {
         free(nue);
