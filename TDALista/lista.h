@@ -47,12 +47,15 @@ int InsertarPosicionN (tLista *p, void* d, unsigned tamInfo, int pos);
 int InsertarAlComienzo (tLista *p, void* d, unsigned tamInfo);
 int sacarPrimeroLista (tLista *p, void* d, unsigned tamInfo);
 int sacarUltimoLista(tLista *p, void* d, unsigned tamInfo);
-
+void mostrar (tLista* p, imp IMP);
 ///PARA QUE SEA GEMERICA, DEBO PASARLE PUNTEROS A FUNCIONAA
 int InsertarEnOrden(tLista* p,const void*d, unsigned tamInfo, tComp CMP, int esDup, tAccion ACCION);
 
 int eliminarElementoSinDupNoOrdenados(tLista*p, void* d, unsigned tamInfo, tComp CMP);
 int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos);
+
+int OrdenarLista (tLista* p, tComp CMP);
+void* buscarMenor (tLista* p, tComp CMP);
 
 
 
