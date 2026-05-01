@@ -73,7 +73,7 @@ int InsertarPosicionN (tLista *p, void* d, unsigned tamInfo, int pos)
     *p = nue; ///HAGO EL ENLACE
     return TODO_OK;
 }
-int InsertarEnOrden(tLista* p,const void*d, unsigned tamInfo, tComp CMP, int esDup, tAccion ACCION)
+int InsertarEnOrden(tLista* p,const void* d, unsigned tamInfo, tComp CMP, int esDup, tAccion ACCION)
 {
     tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
     if(nue == NULL) return SIN_MEM;
@@ -218,3 +218,55 @@ int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos)
     free(elim);
     return TODO_OK;
 }
+
+///ORDENAMIENTO
+int OrdenarLista (tLista* p, tComp CMP)
+{
+    if(*p == NULL) return LISTA_VACIA;
+
+    while((*p)->sig) ///ME MUEVO MIENTRAS HAYA SIGUIENTE, MIENTRAS SEA DISTINTO DE NULL
+    {
+        tNodo* menor = (tNodo*)buscarMenor(p,CMP); ///TENGO EL MENOR
+        if(menor != *p) ///ME FIJO SI EL MENOR NO ES EL QUE  YA ESTOY APUNTANDO
+        {
+        ///HAGO UN INTERCAMBIO
+        void* auxInfo = (*p)->info;
+        (*p)->info = menor->info;
+        menor->info = auxInfo;
+
+        unsigned auxTam = (*p)->tamInfo;
+        (*p)->tamInfo = menor->tamInfo;
+        menor->tamInfo = auxTam;
+        }
+        p = &(*p)->sig; ///AVANZO CON LA VARIABLE LOCAL
+    }
+    return TODO_OK;
+
+}
+void* buscarMenor (tLista* p, tComp CMP)
+{
+    ///tNodo* min = (tNodo*)malloc(sizeof(tNodo));
+    ///if(min == NULL) return NULL;
+    ///min->info = (tNodo*)
+    if(*p == NULL) return NULL;
+    tNodo* act = *p;
+    tNodo* min = act; ///SUPONGO QUE EL MENOR ES EL ACTUAL
+    while(act) ///ME MUEVO MIENTRAS SEA DISTINTO DE NULL
+    {
+        if(CMP(min->info, act->info) > 0) ///LE MANDO EL MINIMO ACTUAL Y EL VALOR ACTUAL AL QUE SE ESTA APUNTANDO. SI DA MAYOR A 0, SIGNIFICA QUE EL SIGUIENTE ES MENOR
+            min = act;
+
+        act = act->sig; ///ME MUEVO CON LA VARIABLE LOCAL
+    }
+    return min; ///LA DIRECCION DE LO QUE APUNTA MIN (EL MINIMO)
+}
+///MOSTRAR
+void mostrar (tLista* p, imp IMP)
+{
+    while(*p)
+    {
+        IMP((*p)->info);
+        p = &(*p)->sig;
+    }
+}
+
