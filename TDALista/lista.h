@@ -36,6 +36,9 @@ typedef void (*accion) (void*, const void*);
 typedef accion tAccion;
 typedef void (*imp) (const void*);
 
+
+typedef void (*Ing) (void* e);
+
 void crearLista (tLista* p);
 int listaVacia (const tLista* p);
 int listaLlena (const tLista* p, unsigned tamElem);
@@ -58,5 +61,5 @@ int OrdenarLista (tLista* p, tComp CMP);
 void* buscarMenor (tLista* p, tComp CMP);
 
 
-
 #endif // LISTA_H_
+
