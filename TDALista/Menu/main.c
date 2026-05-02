@@ -1,15 +1,15 @@
 #include "main.h"
 /**
-**Ejercicio de Programación: Menú para Manejo de una Lista**
-Desarrolle un programa que permita al usuario gestionar una lista de datos mediante un menú de opciones.
+**Ejercicio de ProgramaciÃ³n: MenÃº para Manejo de una Lista**
+Desarrolle un programa que permita al usuario gestionar una lista de datos mediante un menÃº de opciones.
 
 El programa debe permitir realizar las siguientes operaciones sobre la lista:
 
 * Crear la lista
 * Cargar un dato al final de la lista
 * Mostrar la lista
-* Verificar si la lista está llena.
-* Verificar si la lista está vacía
+* Verificar si la lista estÃ¡ llena.
+* Verificar si la lista estÃ¡ vacÃ­a
 * Vaciar la lista
 * Salir
 */
@@ -50,7 +50,6 @@ int main()
     selec = mostrarMenu(&lista,&creado,sizeof(tProducto),ingProd,impProducto, cmpProducto);
     putchar('\n');
     }while(selec != FIN_MENU);
-    sleep(1);
     return 0;
 }
 int mostrarMenu(tLista *p,bool *control,unsigned tamElem,Ing ING, imp IMP, cmp CMP)
@@ -273,4 +272,5 @@ void ingProd (void* e)
         prod->nombre[strlen(prod->nombre) - 1] = '\0';
     while ((c = getchar()) != '\n' && c != EOF);
 }
+
 
