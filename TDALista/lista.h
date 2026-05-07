@@ -58,7 +58,7 @@ int eliminarElementoSinDupNoOrdenados(tLista*p, void* d, unsigned tamInfo, tComp
 int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos);
 
 int OrdenarLista (tLista* p, tComp CMP);
-void* buscarMenor (tLista* p, tComp CMP);
+tNodo** buscarMenor (tLista* p, tComp CMP);
 
 
 #endif // LISTA_H_
