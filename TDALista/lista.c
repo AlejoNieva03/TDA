@@ -243,7 +243,6 @@ int OrdenarLista (tLista* p, tComp CMP)
     return TODO_OK;
 
 }
-///ORDENAMIENTO
 
 int OrdenarLista (tLista* p, tComp CMP)
 {
@@ -256,9 +255,9 @@ int OrdenarLista (tLista* p, tComp CMP)
         if(*menor != *p)
         {
             nodoAmover = *menor; ///GUARDO LA DIRECCION DEL MENOR
-            *menor = nodoAmover->sig;
-            nodoAmover->sig = *p;
-            *p = nodoAmover;
+            *menor = nodoAmover->sig; ///HAGO EL DESENGANCHE DEL NODO A MOVER
+            nodoAmover->sig = *p; ///ENGANCHO EL NODO A MOVER A LA NOEVA POSICION
+            *p = nodoAmover; ///ACTUALIZO
         }
         p = &(*p)->sig;
     }
@@ -274,7 +273,7 @@ tNodo** buscarMenor (tLista* p, tComp CMP)
     while(*p)
     {
         if(CMP((*min)->info,(*p)->info) > 0)
-            min = p;
+            min = p; ///NO ESTOY APUNTANDO AL MINIMO, ESTOY APUNTANDO AL PUNTERO QUE APUNTA AL MINIMO
 
          p = &(*p)->sig;
     }
