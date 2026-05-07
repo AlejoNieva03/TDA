@@ -243,54 +243,42 @@ int OrdenarLista (tLista* p, tComp CMP)
     return TODO_OK;
 
 }
-void* buscarMenor (tLista* p, tComp CMP)
-{
-    ///tNodo* min = (tNodo*)malloc(sizeof(tNodo));
-    ///if(min == NULL) return NULL;
-    ///min->info = (tNodo*)
-    if(*p == NULL) return NULL;
-    tNodo* act = *p;
-    tNodo* min = act; ///SUPONGO QUE EL MENOR ES EL ACTUAL
-    while(act) ///ME MUEVO MIENTRAS SEA DISTINTO DE NULL
-    {
-        if(CMP(min->info, act->info) > 0) ///LE MANDO EL MINIMO ACTUAL Y EL VALOR ACTUAL AL QUE SE ESTA APUNTANDO. SI DA MAYOR A 0, SIGNIFICA QUE EL SIGUIENTE ES MENOR
-            min = act;
+///ORDENAMIENTO
 
-        act = act->sig; ///ME MUEVO CON LA VARIABLE LOCAL
-    }
-    return min; ///LA DIRECCION DE LO QUE APUNTA MIN (EL MINIMO)
-}
 int OrdenarLista (tLista* p, tComp CMP)
 {
     if(*p == NULL) return LISTA_VACIA;
-
+    tNodo* nodoAmover;
+    tNodo** menor;
     while((*p)->sig) ///ME MUEVO MIENTRAS HAYA SIGUIENTE, MIENTRAS SEA DISTINTO DE NULL
     {
-       tLista* q = p;
-       *q = buscarAnterior(p,CMP);
-       tNodo* nodoAmover = (*q)->sig; ///ME GUARDO EL MINIMO
-       (*q)->sig = nodoAmover->sig; ///HAGO EL ENLACE DEL ANTERIOR CON EL SIGUIENTE AL MINIMO
-       nodoAmover->sig = *p;
-       *p = nodoAmover;
-        p = &(*p)->sig; ///AVANZO CON LA VARIABLE LOCAL
+        menor = buscarMenor(p,CMP); ///BUSCO EL MENOR
+        if(*menor != *p)
+        {
+            nodoAmover = *menor; ///GUARDO LA DIRECCION DEL MENOR
+            *menor = nodoAmover->sig;
+            nodoAmover->sig = *p;
+            *p = nodoAmover;
+        }
+        p = &(*p)->sig;
     }
     return TODO_OK;
 
 }
-void* buscarAnterior (tLista* p, tComp CMP)
+tNodo** buscarMenor (tLista* p, tComp CMP)
 {
-    if(*p == NULL) return NULL;
-    tNodo* act = *p;
-    tNodo* anterior = act; ///SUPONGO QUE EL MENOR ES EL ACTUAL
-    while(act->sig) ///ME MUEVO MIENTRAS EXISTA EL SIGUIENTE
+    ///tNodo* min = (tNodo*)malloc(sizeof(tNodo));
+    ///if(min == NULL) return NULL;
+    ///min->info = (tNodo*)
+    tNodo** min = p;
+    while(*p)
     {
-        tNodo* siguiente = act->sig;
-        if(CMP(anterior->info,siguiente->info) > 0) 
-            anterior = act; ///ME GUARDO EL ANTERIOR AL MENOR O MAYOR
+        if(CMP((*min)->info,(*p)->info) > 0)
+            min = p;
 
-        act = act->sig; ///ME MUEVO CON LA VARIABLE LOCAL
+         p = &(*p)->sig;
     }
-    return anterior; ///LA DIRECCION A LA QUE APUNTA EL ANTERIOR AL MINIMO O MAXIMO
+    return min;
 }
 ///MOSTRAR
 void mostrar (tLista* p, imp IMP)
