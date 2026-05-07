@@ -260,6 +260,38 @@ void* buscarMenor (tLista* p, tComp CMP)
     }
     return min; ///LA DIRECCION DE LO QUE APUNTA MIN (EL MINIMO)
 }
+int OrdenarLista (tLista* p, tComp CMP)
+{
+    if(*p == NULL) return LISTA_VACIA;
+
+    while((*p)->sig) ///ME MUEVO MIENTRAS HAYA SIGUIENTE, MIENTRAS SEA DISTINTO DE NULL
+    {
+       tLista* q = p;
+       *q = buscarAnterior(p,CMP);
+       tNodo* nodoAmover = (*q)->sig; ///ME GUARDO EL MINIMO
+       (*q)->sig = nodoAmover->sig; ///HAGO EL ENLACE DEL ANTERIOR CON EL SIGUIENTE AL MINIMO
+       nodoAmover->sig = *p;
+       *p = nodoAmover;
+        p = &(*p)->sig; ///AVANZO CON LA VARIABLE LOCAL
+    }
+    return TODO_OK;
+
+}
+void* buscarAnterior (tLista* p, tComp CMP)
+{
+    if(*p == NULL) return NULL;
+    tNodo* act = *p;
+    tNodo* anterior = act; ///SUPONGO QUE EL MENOR ES EL ACTUAL
+    while(act->sig) ///ME MUEVO MIENTRAS EXISTA EL SIGUIENTE
+    {
+        tNodo* siguiente = act->sig;
+        if(CMP(anterior->info,siguiente->info) > 0) 
+            anterior = act; ///ME GUARDO EL ANTERIOR AL MENOR O MAYOR
+
+        act = act->sig; ///ME MUEVO CON LA VARIABLE LOCAL
+    }
+    return anterior; ///LA DIRECCION A LA QUE APUNTA EL ANTERIOR AL MINIMO O MAXIMO
+}
 ///MOSTRAR
 void mostrar (tLista* p, imp IMP)
 {
