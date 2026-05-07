@@ -167,7 +167,7 @@ int mostrarMenu(tLista *p,bool *control,unsigned tamElem,Ing ING, imp IMP, cmp C
         }
     case 9:
         {
-        if(OrdenarLista(p,cmpPersona) == TODO_OK) puts("Se ordeno la lista correctamente");
+        if(OrdenarLista(p,cmpProducto) == TODO_OK) puts("Se ordeno la lista correctamente");
         else puts("La lista esta vacia");
 
         break;
