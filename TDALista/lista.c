@@ -73,7 +73,7 @@ int InsertarPosicionN (tLista *p, void* d, unsigned tamInfo, int pos)
     *p = nue; ///HAGO EL ENLACE
     return TODO_OK;
 }
-int InsertarEnOrden(tLista* p,const void* d, unsigned tamInfo, tComp CMP, int esDup, tAccion ACCION)
+int InsertarEnOrdenDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP)
 {
     tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
     if(nue == NULL) return SIN_MEM;
@@ -86,13 +86,9 @@ int InsertarEnOrden(tLista* p,const void* d, unsigned tamInfo, tComp CMP, int es
     memcpy(nue->info,d,tamInfo);
     nue->tamInfo = tamInfo;
     int dato;
-    while(*p && (dato = CMP(nue->info,(*p)->info)) > 0)///ME MUEVO MIENTRAS NO SEA NULL Y MIENTRAS EL VALOR A INGRESAR SEA MAYOR AL VALOR APUNTADO
+    while(*p && (dato = CMP(nue->info,(*p)->info)) >= 0)///ME MUEVO MIENTRAS NO SEA NULL Y MIENTRAS EL VALOR A INGRESAR SEA MAYOR AL VALOR APUNTADO
     {
         p = &(*p)->sig; ///MUEVO LA VARIABLE LOCAL
-    }
-    if(*p && dato == 0 && esDup) ///SI EL DATO ES DUPLICADO Y QUIERO REALIZAR UNA ACCION, ENTRO A ESTE IF
-    {
-        ACCION(nue->info,(*p)->info);
     }
     ///HAGO EL ENLACE
     nue->sig = *p;
@@ -196,6 +192,45 @@ int eliminarElementoSinDupNoOrdenados(tLista*p, void* d, unsigned tamInfo, tComp
     free(elim);
     return TODO_OK;
 }
+int eliminarElementoTotal(tLista*p, void* d, unsigned tamInfo, tComp CMP) ///ELIMINO TODAS LAS APARICIONES DEL ELEMENTO
+{
+    if(*p == NULL) return LISTA_VACIA;
+
+    while(*p)
+    {
+        if(CMP(d,(*p)->info) == 0) ///ENCONTRE EL ELEMENTO BUSCADO
+        {
+            tNodo* elim = *p;
+            *p = elim->sig;
+            memcpy(d,elim->info,Minimo(tamInfo,elim->tamInfo));
+            free(elim->info);
+            free(elim);
+        }
+        else
+            p = &(*p)->sig;
+    }
+
+    return TODO_OK;
+}
+int eliminarElementoSinDupOrdenados(tLista*p, void* d, unsigned tamInfo, tComp CMP)
+{
+    if(*p == NULL) return LISTA_VACIA;
+    while(*p && CMP(d,(*p)->info) > 0)
+    {
+        p = &(*p)->sig;
+    }
+    if(*p == NULL || CMP(d,(*p)->info) != 0) ///LLEGUE AL FINAL Y NO HAY NINGUN ELEMENTO
+    {
+        return NO_ENCONTRADO;
+    }
+    memcpy(d,(*p)->info,Minimo(tamInfo,(*p)->tamInfo)); ///NUNCA OLVIDAR ESTO
+    tNodo* elim = *p; ///APUNTO AL NODO QUE QUIERO ELIMINAR
+    *p = elim->sig;
+    ///ELIMINO EL NODO
+    free(elim->info);
+    free(elim);
+    return TODO_OK;
+}
 int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos)
 {
     if(*p == NULL) return LISTA_VACIA;
@@ -220,29 +255,6 @@ int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos)
 }
 
 ///ORDENAMIENTO
-int OrdenarLista (tLista* p, tComp CMP)
-{
-    if(*p == NULL) return LISTA_VACIA;
-
-    while((*p)->sig) ///ME MUEVO MIENTRAS HAYA SIGUIENTE, MIENTRAS SEA DISTINTO DE NULL
-    {
-        tNodo* menor = (tNodo*)buscarMenor(p,CMP); ///TENGO EL MENOR
-        if(menor != *p) ///ME FIJO SI EL MENOR NO ES EL QUE  YA ESTOY APUNTANDO
-        {
-        ///HAGO UN INTERCAMBIO
-        void* auxInfo = (*p)->info;
-        (*p)->info = menor->info;
-        menor->info = auxInfo;
-
-        unsigned auxTam = (*p)->tamInfo;
-        (*p)->tamInfo = menor->tamInfo;
-        menor->tamInfo = auxTam;
-        }
-        p = &(*p)->sig; ///AVANZO CON LA VARIABLE LOCAL
-    }
-    return TODO_OK;
-
-}
 
 int OrdenarLista (tLista* p, tComp CMP)
 {
@@ -279,6 +291,7 @@ tNodo** buscarMenor (tLista* p, tComp CMP)
     }
     return min;
 }
+
 ///MOSTRAR
 void mostrar (tLista* p, imp IMP)
 {
@@ -288,4 +301,6 @@ void mostrar (tLista* p, imp IMP)
         p = &(*p)->sig;
     }
 }
+
+
 
