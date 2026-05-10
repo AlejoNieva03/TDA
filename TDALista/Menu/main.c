@@ -42,9 +42,10 @@ int main()
     puts("  5. Verificar si la lista esta vacia");
     puts("  6. Vaciar la lista");
     puts("  7. Insertar en Orden");
-    puts("  8. Eliminar sin duplicados");
-    puts("  9. Ordenar de Menor a Mayo");
-    puts("  10. SALIR");
+    puts("  8. Eliminar elemento de una posicion");
+    puts("  9. Eliminar un elemento por codigo");
+    puts("  10. Ordenar de Menor a Mayo");
+    puts("  11. SALIR");
     puts("--------------------------------------------------");
     printf(" Seleccione una opcion [1-%d]: ",FIN_MENU);
     selec = mostrarMenu(&lista,&creado,sizeof(tProducto),ingProd,impProducto, cmpProducto);
@@ -159,7 +160,7 @@ int mostrarMenu(tLista *p,bool *control,unsigned tamElem,Ing ING, imp IMP, cmp C
             if(ret == NO_ENCONTRADO) puts("El elemento que se quiere eliminar, no existe en la lista");
             if(ret == TODO_OK)
             {
-                puts("Se elimino el elemento correctamente");
+                puts("Se elimino el elemento:");
                 IMP(elem);
             }
             free(elem);
@@ -167,12 +168,33 @@ int mostrarMenu(tLista *p,bool *control,unsigned tamElem,Ing ING, imp IMP, cmp C
         }
     case 9:
         {
+            void* elem = malloc(tamElem);
+            if(elem == NULL)
+             {
+                 puts("No hay memoria");
+                 return SIN_MEM;
+             }
+            printf("Ingresar el codigo o nombre del producto que desea eliminar:\n");
+            ING(elem);
+            int ret = eliminarElementoSinDupNoOrdenados(p,elem,tamElem,CMP);
+            if(ret == LISTA_VACIA) puts("No hay elementos en la lista");
+            if(ret == NO_ENCONTRADO) puts("El elemento que se envio, no existe");
+            if(ret == TODO_OK)
+            {
+                puts("Se elimino el elemento:");
+                IMP(elem);
+            }
+            free(elem);
+            break;
+        }
+    case 10:
+        {
         if(OrdenarLista(p,CMP) == TODO_OK) puts("Se ordeno la lista correctamente");
         else puts("La lista esta vacia");
 
         break;
         }
-    case 10:
+    case 11:
         {
         puts("Saliendo del programa");
         if(*p != NULL)
