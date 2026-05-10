@@ -135,7 +135,7 @@ int mostrarMenu(tLista *p,bool *control,unsigned tamElem,Ing ING, imp IMP, cmp C
                  return SIN_MEM;
              }
              ING(elem);
-            if(InsertarEnOrden(p,elem,tamElem,CMP,false,NULL) == SIN_MEM) puts("NO HAY MEMORIA");
+            if(InsertarEnOrdenDupSinAccion(p,elem,tamElem,CMP) == SIN_MEM) puts("NO HAY MEMORIA");
              else puts("SE INSERTO EL ELEMENTO CORRECTAMENTE");
 
             free(elem);
@@ -203,7 +203,7 @@ int _InsertarEnOrden(tLista* p, cmp CMP)
     scanf("%lld", &persona.dni);
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
-    return InsertarEnOrden(p,&persona,sizeof(tPersona),CMP,false,NULL);
+    return InsertarEnOrdenDupSinAccion(p,&persona,sizeof(tPersona),CMP);
 
 }
 int _InsertarAlFinal(tLista* p)
@@ -272,5 +272,4 @@ void ingProd (void* e)
         prod->nombre[strlen(prod->nombre) - 1] = '\0';
     while ((c = getchar()) != '\n' && c != EOF);
 }
-
 
