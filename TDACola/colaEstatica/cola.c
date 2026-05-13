@@ -24,7 +24,7 @@ int ponerEnCola (tCola* p, const void* dato, unsigned tamElem)
     unsigned ini,
              fin;
     ///    hago sizeof de un sizeof, esto me da cuanto ocupa un size_t en mi arquitectura
-    if( (ini = MINIMO(sizeof(tamElem),TAM_COLA - p->ult)) != 0) ///AGARRO EL MINIMO. Que no valga 0 porque seria innecesario
+    if( (ini = MINIMO(sizeof(tamElem),TAM_COLA - p->ult)) != 0) ////si el tamaño del dato entra sin tener que partirlo   || si ini da 0 es porque el tamDato no entra de este lado de la cola
         memcpy(p->cola + p->ult, &tamElem, ini);
     if( (fin = sizeof(tamElem) - ini) != 0)///Me fijo si quedo fragmentado. Si quedo fragmentado, fin va a dar distinto de 0
         memcpy(p->cola, ((char*)&tamElem) + ini, fin);
@@ -44,7 +44,7 @@ int ponerEnCola (tCola* p, const void* dato, unsigned tamElem)
 int SacarDeCola (tCola* p, void* dato, unsigned tamElem)
 {
     if( p->tamDis == TAM_COLA) return COLA_VACIA; ///ME FIJO SI LA COLA ESTA VACIA
-    unsigned tamInfo; ///El tama�o de la informacion
+    unsigned tamInfo; ///El tamaño de la informacion
     unsigned ini,
              fin;
     if( (ini = MINIMO(sizeof(unsigned),TAM_COLA - p->ini)) != 0 )
@@ -53,7 +53,7 @@ int SacarDeCola (tCola* p, void* dato, unsigned tamElem)
         memcpy( ((char*)&tamInfo) + ini, p->cola,fin);
     p->ini = fin? fin: p->ini + ini;
 
-    ///ACTUALIZO EL TAMA�O DISPONIBLE
+    ///ACTUALIZO EL TAMAÑO DISPONIBLE
      p->tamDis += tamInfo + sizeof(unsigned);
      tamInfo = MINIMO(tamInfo,tamElem); ///AGARRO EL MINIMO
 
@@ -63,14 +63,14 @@ int SacarDeCola (tCola* p, void* dato, unsigned tamElem)
         memcpy(((char*)dato) + ini,p->cola,fin);
 
     p->ini = fin? fin: p->ini + ini;
-    ///ACTUALIZO El tama�o disponible
+    ///ACTUALIZO El tamaño disponible
 
     return TODO_OK;
 }
 int verPrimero (const tCola *p, void* dato, unsigned tamElem)
 {
     if( p->tamDis == TAM_COLA) return COLA_VACIA; ///ME FIJO SI LA COLA ESTA VACIA
-    unsigned tamInfo; ///El tama�o de la informacion
+    unsigned tamInfo; ///El tamaño de la informacion
     unsigned ini,
              fin;
     unsigned pos = p->ini;
