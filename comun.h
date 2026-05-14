@@ -37,6 +37,7 @@
 #define NO_ENCONTRADO -777
 
 #define LISTA_NO_LLENA 0
+#define LISTA_LLENA 1
 
 
 #define REALIZAR_ACCION 1
