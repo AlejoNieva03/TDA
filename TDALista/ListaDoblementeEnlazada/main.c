@@ -19,68 +19,84 @@ int main()
     crearLista(&lista);
     tRegistro producto;
 
-    producto.codigo = 103;
+    producto.codigo = 101;
     producto.cantidad = 40;
 
-    insertarListaOrdenadaConDuplicados(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+    //insertarListaAlFinal(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+    insertarListaAlInicio(&lista,&producto,sizeof(tRegistro));
 
     mostrarListaIzqDer(&lista,impReg);
     mostrarListaDerIzq(&lista,impReg);
 
         puts("");
 
-    producto.codigo = 102;
+    producto.codigo = 103;
     producto.cantidad = 50;
 
-    insertarListaOrdenadaConDuplicados(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+    insertarListaAlFinal(&lista,&producto,sizeof(tRegistro));
 
     mostrarListaIzqDer(&lista,impReg);
     mostrarListaDerIzq(&lista,impReg);;
 
         puts("");
 
-    producto.codigo = 101;
+    producto.codigo = 100;
     producto.cantidad = 30;
 
-    insertarListaOrdenadaConDuplicados(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+   insertarListaAlFinal(&lista,&producto,sizeof(tRegistro));
 
     mostrarListaIzqDer(&lista,impReg);
     mostrarListaDerIzq(&lista,impReg);
 
         puts("");
 
-    producto.codigo = 100;
+    producto.codigo = 102;
     producto.cantidad = 50;
 
-    insertarListaOrdenadaConDuplicados(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+    insertarListaAlInicio(&lista,&producto,sizeof(tRegistro));
 
     mostrarListaIzqDer(&lista,impReg);
     mostrarListaDerIzq(&lista,impReg);
 
         puts("");
-    producto.codigo = 102;
+          verActual(&lista,&producto,sizeof(tRegistro));
 
-    eliminarLista(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
-
-    mostrarListaIzqDer(&lista,impReg);
-    mostrarListaDerIzq(&lista,impReg);
-         puts("");
-
-    puts("El elemento eliminado es: ");
+    puts("El elemento actual apuntado es: ");
     impReg(&producto);
 
         puts("");
-
-    producto.codigo = 103;
-    eliminarLista(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
-
-    mostrarListaIzqDer(&lista,impReg);
+//
+//    producto.codigo = 102;
+//
+//    eliminarElementoLista(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+//
+//    mostrarListaIzqDer(&lista,impReg);
+//    mostrarListaDerIzq(&lista,impReg);
+//         puts("");
+//
+//    puts("El elemento eliminado es: ");
+//    impReg(&producto);
+//
+//        puts("");
+//
+//    producto.codigo = 103;
+//    eliminarElementoLista(&lista,&producto,sizeof(tRegistro),cmpXCodigo);
+//
+//    mostrarListaIzqDer(&lista,impReg);
+//    mostrarListaDerIzq(&lista,impReg);
+//         puts("");
+//
+//    puts("El elemento eliminado es: ");
+//    impReg(&producto);
+//         puts("");
+ordenarLista(&lista,cmpXCodigo);
+  mostrarListaIzqDer(&lista,impReg);
     mostrarListaDerIzq(&lista,impReg);
-         puts("");
+    puts("");
 
-    puts("El elemento eliminado es: ");
-    impReg(&producto);
 
+
+    vaciarLista(&lista);
 
     return 0;
 }
