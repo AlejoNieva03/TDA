@@ -309,6 +309,33 @@ void _mostrarListaOrdenInversoRec (tLista* p, imp IMP)
         IMP((*p)->info);
     }
 }
+
+int mostrarListaOrdenInverso(tLista* p, imp IMP)
+{
+    if(*p == NULL) return LISTA_VACIA;
+    tNodo** aux = p;
+    while((*aux)->sig)
+    {
+       aux = &(*aux)->sig;
+    }
+    ///ESTOY PARADO EN EL ULTIMO
+    tNodo** elem = p;
+    IMP((*aux)->info);
+    while(*aux != *p)
+    {
+        while((*elem)->sig != *aux)
+        {
+            elem = &(*elem)->sig;
+        }
+        IMP((*elem)->info);
+        aux = elem;
+        elem = p;
+    }
+
+    return TODO_OK;
+}
+
+////USANDO PILA
 int mostrarListaOrdenInverso(tLista* p, imp IMP)
 {
     if(*p == NULL) return LISTA_VACIA;
