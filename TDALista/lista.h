@@ -17,7 +17,7 @@
 
 #define REALIZAR_ACCION 1
 #define NO_REALIZAR_ACCION 0
-
+#include "../pilaEstatica/pila.h"
 
 
 typedef struct sNodo
@@ -50,7 +50,7 @@ int InsertarPosicionN (tLista *p, void* d, unsigned tamInfo, int pos);
 int InsertarAlComienzo (tLista *p, void* d, unsigned tamInfo);
 int sacarPrimeroLista (tLista *p, void* d, unsigned tamInfo);
 int sacarUltimoLista(tLista *p, void* d, unsigned tamInfo);
-void mostrar (tLista* p, imp IMP);
+void mostrarLista (tLista* p, imp IMP);
 ///PARA QUE SEA GEMERICA, DEBO PASARLE PUNTEROS A FUNCIONAA
 int InsertarEnOrdenSinDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP);
 int InsertarEnOrdenDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP);
@@ -61,6 +61,6 @@ int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos);
 int OrdenarLista (tLista* p, tComp CMP);
 tNodo** buscarMenor (tLista* p, tComp CMP);
 
+int mostrarListaOrdenInverso(tLista* p, imp IMP);
 
 #endif // LISTA_H_
-

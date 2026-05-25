@@ -30,10 +30,6 @@ void vaciarLista (tLista *p)
         free(aux);
     }
 }
-/*
-SOLO RESERVAMOS MEMORIA CUANDO ESTAMOS SEGURO QUE NECESITAMOS INSERTAR EL NODO
-PODRIA PASAR QUE NO QUISIERAMOS INGRESAR DUPLICADOS O SOLO QUEREMOS REALIZAR UNA ACCION
-*/
 ///FUNCIONES DE INSERTAR
 int InsertarAlComienzo (tLista *p, void* d, unsigned tamInfo)
 {
@@ -297,7 +293,7 @@ tNodo** buscarMenor (tLista* p, tComp CMP)
 }
 
 ///MOSTRAR
-void mostrar (tLista* p, imp IMP)
+void mostrarLista (tLista* p, imp IMP)
 {
     while(*p)
     {
@@ -305,6 +301,28 @@ void mostrar (tLista* p, imp IMP)
         p = &(*p)->sig;
     }
 }
-
-
-
+int mostrarListaOrdenInverso(tLista* p, imp IMP)
+{
+    if(*p == NULL) return LISTA_VACIA;
+    tPila c;
+    crearPila(&c);
+    unsigned tamElem = (*p)->tamInfo;
+    while(*p)
+    {
+        ponerEnPila(&c,(*p)->info,(*p)->tamInfo);
+        p = &(*p)->sig;
+    }
+    void* dato = malloc(tamElem);
+    if(dato == NULL)
+    {
+        vaciarPila(&c);
+        return SIN_MEM;
+    }
+    while(desapilar(&c,dato,tamElem) != PILA_VACIA)
+    {
+        IMP(dato);
+    }
+    free(dato);
+   /// vaciarPila(&c); NO HACE FALTA PORQUE LA PILA YA SE VACIO EN EL WHILE ANTERIOR
+    return TODO_OK;
+}
