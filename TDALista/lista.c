@@ -301,6 +301,14 @@ void mostrarLista (tLista* p, imp IMP)
         p = &(*p)->sig;
     }
 }
+void _mostrarListaOrdenInversoRec (tLista* p, imp IMP)
+{
+    if(*p)
+    {
+        _mostrarListaOrdenInversoRec(&(*p)->sig,IMP);
+        IMP((*p)->info);
+    }
+}
 int mostrarListaOrdenInverso(tLista* p, imp IMP)
 {
     if(*p == NULL) return LISTA_VACIA;

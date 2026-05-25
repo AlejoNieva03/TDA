@@ -61,6 +61,7 @@ int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos);
 int OrdenarLista (tLista* p, tComp CMP);
 tNodo** buscarMenor (tLista* p, tComp CMP);
 
+void _mostrarListaOrdenInversoRec (tLista* p, imp IMP);
 int mostrarListaOrdenInverso(tLista* p, imp IMP);
 
 #endif // LISTA_H_

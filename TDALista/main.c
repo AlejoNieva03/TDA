@@ -63,8 +63,10 @@ int main()
     putchar('\n');
     putchar('\n');
     puts("MOSTRANDO LA LISTA EN ORDEN INVERSO:");
-    mostrarListaOrdenInverso(&lista,impProductos);
+    ///mostrarListaOrdenInverso(&lista,impProductos);
+    _mostrarListaOrdenInversoRec(&lista,impProductos);
     putchar('\n');
+       mostrarLista(&lista,impProductos);
 
 
     vaciarLista(&lista);
