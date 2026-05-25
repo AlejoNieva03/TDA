@@ -2,21 +2,24 @@
 
 int main()
 {
-     char linea [] = "Anita lava la tina"; ///EL COMPILADOR LE AGREGA EL \0
-    ///SI HICIERA char b[] = {'H','o','l','a'}; // NO AGREGA EL '\0'
+//     char linea [] = "Anita lava la tina"; ///EL COMPILADOR LE AGREGA EL \0
+//    ///SI HICIERA char b[] = {'H','o','l','a'}; // NO AGREGA EL '\0'
+//
+//    mostrarCadenaChar(linea);
+//    putchar('\n');
+//    mostrarCadenaCharInv(linea);
+//     putchar('\n'); putchar('\n');
+//    mostrarProgresivo(linea);
+//     putchar('\n');   putchar('\n');
+//    mostrarProgresivoInv(linea);
+//     putchar('\n');
+//      mostrarProgresivocomunEInv(linea);
+//     putchar('\n');
+//     esPalindromo(linea)? puts("Es palindromo"): puts("No es palindromo");
+//       putchar('\n');
+     int num = 1234;
+     mostrarNumeroProgresivoCompleto(num);
 
-    mostrarCadenaChar(linea);
-    putchar('\n');
-    mostrarCadenaCharInv(linea);
-     putchar('\n'); putchar('\n');
-    mostrarProgresivo(linea);
-     putchar('\n');   putchar('\n');
-    mostrarProgresivoInv(linea);
-     putchar('\n');
-      mostrarProgresivocomunEInv(linea);
-     putchar('\n');
-     esPalindromo(linea)? puts("Es palindromo"): puts("No es palindromo");
-       putchar('\n');
     return 0;
 }
 long long factorial (int num)
@@ -121,4 +124,103 @@ bool _esIgual (char x, char y)
 
     return x == y;
 
+}
+void mostrarNumeroProgresivo(int num)
+{
+    int fin = num%10;
+    _mostrarNumeroProgresivo(num,fin);
+}
+void _mostrarNumeroProgresivo(int num, int fin)
+{
+    if(num != fin)
+    {
+         int potencia = (int)pow(10, (int)log10(num));
+         // 3. 1234 % 1000 = 234 (Le quitamos el primer dígito sin usar bucles)
+         _mostrarNumeroProgresivo(num%potencia,fin);
+    }
+     printf("%d\n",num);
+
+}
+
+void mostrarNumeroProgresivoInv(int num)
+{
+    int fin = num%10;
+    _mostrarNumeroProgresivoInv(num,fin);
+}
+void _mostrarNumeroProgresivoInv(int num, int fin)
+{
+    printf("%d\n",num);
+    if(num == fin)
+        return;
+    else
+    {
+         int potencia = (int)pow(10, (int)log10(num)); ///SACO EL PRIMER DIGITO
+         num = num % potencia;
+         _mostrarNumeroProgresivoInv(num,fin);
+    }
+
+}
+
+void mostrarNumeroProgresivoCompleto (int num)
+{
+    int fin = num%10;
+    _mostrarNumeroProgresivoInv(num,fin);
+    _mostrarNumeroProgresivo(num,fin);
+
+}
+void printi1(int n)
+{
+if(n == 0) {
+return;
+}
+
+printi1(n / 10);
+printf("%d\n", n % 10);
+}
+
+void printi2(int n)
+{
+if(n == 0) {
+return;
+}
+
+printf("%d\n", n % 10);
+printi2(n / 10);
+}
+
+void printi3(int n)
+{
+if(n == 0) {
+return;
+}
+
+printf("%d\n", n % 10);
+printi3(n / 10);
+printf("%d\n", n % 10);
+}
+
+void printi4(int n)
+{
+if(n == 0) {
+return;
+}
+
+printf("%d\n", n);
+printi4(n / 10);
+}
+
+void printi5(int n)
+{
+if(n == 0) {
+return;
+}
+
+printi5(n / 10);
+printf("%d\n", n);
+}
+
+void printi6(int n)
+{
+printi4(n);
+printi5(n);
 }
