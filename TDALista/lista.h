@@ -10,6 +10,7 @@
 #define SIN_MEM -999
 #define ERROR -888
 #define NO_ENCONTRADO -777
+#define DUPLICADO 2
 
 #define LISTA_NO_LLENA 0
 
@@ -17,7 +18,6 @@
 
 #define REALIZAR_ACCION 1
 #define NO_REALIZAR_ACCION 0
-#include "../pilaEstatica/pila.h"
 
 
 typedef struct sNodo
@@ -53,7 +53,7 @@ int sacarUltimoLista(tLista *p, void* d, unsigned tamInfo);
 void mostrarLista (tLista* p, imp IMP);
 ///PARA QUE SEA GEMERICA, DEBO PASARLE PUNTEROS A FUNCIONAA
 int InsertarEnOrdenSinDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP);
-int InsertarEnOrdenDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP);
+int InsertarEnOrdenConDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP);
 
 int eliminarElementoSinDupNoOrdenados(tLista*p, void* d, unsigned tamInfo, tComp CMP);
 int eliminarElementoPosN (tLista*p, void* d, unsigned tamInfo, int pos);
@@ -63,7 +63,6 @@ tNodo** buscarMenor (tLista* p, tComp CMP);
 
 void _mostrarListaOrdenInversoRec (tLista* p, imp IMP);
 int mostrarListaOrdenInverso(tLista* p, imp IMP);
-
-int mostrarListaOrdenInversoConPila (tLista* p, imp IMP);
+int mostrarListaOrdenInversoConPila(tLista* p, imp IMP);
 
 #endif // LISTA_H_

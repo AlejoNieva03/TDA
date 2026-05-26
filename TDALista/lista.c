@@ -73,9 +73,9 @@ int InsertarPosicionN (tLista *p, void* d, unsigned tamInfo, int pos)
     *p = nue; ///HAGO EL ENLACE
     return TODO_OK;
 }
-int InsertarEnOrdenDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP)
+int InsertarEnOrdenConDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP)
 {
-    tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
+        tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
     if(nue == NULL) return SIN_MEM;
     nue->info = malloc (tamInfo);
     if(nue->info == NULL)
@@ -89,6 +89,35 @@ int InsertarEnOrdenDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp 
     while(*p && (dato = CMP(nue->info,(*p)->info)) >= 0)///ME MUEVO MIENTRAS NO SEA NULL Y MIENTRAS EL VALOR A INGRESAR SEA MAYOR AL VALOR APUNTADO
     {
         p = &(*p)->sig; ///MUEVO LA VARIABLE LOCAL
+    }
+    ///HAGO EL ENLACE
+    nue->sig = *p;
+    *p = nue;
+    return TODO_OK;
+}
+int InsertarEnOrdenSinDupSinAccion(tLista* p,const void*d, unsigned tamInfo, tComp CMP)
+{
+    tNodo* nue = (tNodo*)malloc (sizeof(tNodo));
+    if(nue == NULL) return SIN_MEM;
+    nue->info = malloc (tamInfo);
+    if(nue->info == NULL)
+    {
+        free(nue);
+        return SIN_MEM;
+    }
+    memcpy(nue->info,d,tamInfo);
+    nue->tamInfo = tamInfo;
+    int dato;
+    while(*p && (dato = CMP(nue->info,(*p)->info)) > 0)///ME MUEVO MIENTRAS NO SEA NULL Y MIENTRAS EL VALOR A INGRESAR SEA MAYOR AL VALOR APUNTADO
+    {
+        p = &(*p)->sig; ///MUEVO LA VARIABLE LOCAL
+    }
+
+    if(*p && dato == 0)
+    {
+        free(nue->info);
+        free(nue);
+        return DUPLICADO;
     }
     ///HAGO EL ENLACE
     nue->sig = *p;
@@ -309,7 +338,6 @@ void _mostrarListaOrdenInversoRec (tLista* p, imp IMP)
         IMP((*p)->info);
     }
 }
-
 int mostrarListaOrdenInverso(tLista* p, imp IMP)
 {
     if(*p == NULL) return LISTA_VACIA;

@@ -18,42 +18,62 @@ int main()
 {
     tProducto producto;
     tLista lista;
+    int ret;
     crearLista(&lista);
     producto.codigo = 104;
     strcpy(producto.Nombre,"PlayStation 4");
-    InsertarAlFinal(&lista,&producto,sizeof(tProducto));
-    mostrarLista(&lista,impProductos);
-
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
     puts("");
 
     producto.codigo = 105;
     strcpy(producto.Nombre,"PlayStation 5");
-    InsertarAlFinal(&lista,&producto,sizeof(tProducto));
-    mostrarLista(&lista,impProductos);
-
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
     puts("");
 
 
     producto.codigo = 102;
     strcpy(producto.Nombre,"PlayStation 2");
-    InsertarAlFinal(&lista,&producto,sizeof(tProducto));
-   mostrarLista(&lista,impProductos);
-
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
     puts("");
 
     producto.codigo = 103;
     strcpy(producto.Nombre,"PlayStation 3");
-    InsertarAlFinal(&lista,&producto,sizeof(tProducto));
-    mostrarLista(&lista,impProductos);
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
+
 
     puts("");
 
     producto.codigo = 101;
     strcpy(producto.Nombre,"PlayStation 1");
-    InsertarAlFinal(&lista,&producto,sizeof(tProducto));
-    mostrarLista(&lista,impProductos);
-
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
     puts("");
+
+
+    producto.codigo = 102;
+    strcpy(producto.Nombre,"PlayStation 2");
+    ret = InsertarEnOrdenSinDupSinAccion(&lista,&producto,sizeof(tProducto),cmpProductos);
+    if(ret == TODO_OK)    mostrarLista(&lista,impProductos);
+    if(ret == SIN_MEM) puts("\nNo hay espacio en la memoria\n");
+    if(ret == DUPLICADO) puts("\nNo se admiten elementos duplicados\n");
+    puts("");
+
+
+    puts("LISTA ORDENADA:");
 
     OrdenarLista(&lista,cmpProductos);
 
@@ -64,9 +84,9 @@ int main()
     putchar('\n');
     puts("MOSTRANDO LA LISTA EN ORDEN INVERSO:");
     ///mostrarListaOrdenInverso(&lista,impProductos);
-    _mostrarListaOrdenInversoRec(&lista,impProductos);
+    mostrarListaOrdenInverso(&lista,impProductos);
     putchar('\n');
-       mostrarLista(&lista,impProductos);
+    mostrarLista(&lista,impProductos);
 
 
     vaciarLista(&lista);
