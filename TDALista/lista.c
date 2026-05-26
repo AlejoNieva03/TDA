@@ -313,30 +313,30 @@ void _mostrarListaOrdenInversoRec (tLista* p, imp IMP)
 int mostrarListaOrdenInverso(tLista* p, imp IMP)
 {
     if(*p == NULL) return LISTA_VACIA;
-    tNodo** aux = p;
-    while((*aux)->sig)
+    tNodo* aux = *p;
+    while(aux->sig)
     {
-       aux = &(*aux)->sig;
+       aux = aux->sig;
     }
     ///ESTOY PARADO EN EL ULTIMO
-    tNodo** elem = p;
-    IMP((*aux)->info);
-    while(*aux != *p)
+    tNodo* elem = *p;
+    IMP(aux->info);
+    while(aux != *p)
     {
-        while((*elem)->sig != *aux)
+        while(elem->sig != aux)
         {
-            elem = &(*elem)->sig;
+            elem = elem->sig;
         }
-        IMP((*elem)->info);
+        IMP(elem->info);
         aux = elem;
-        elem = p;
+        elem = *p;
     }
 
     return TODO_OK;
 }
 
 ////USANDO PILA
-int mostrarListaOrdenInverso(tLista* p, imp IMP)
+int mostrarListaOrdenInversoConPila(tLista* p, imp IMP)
 {
     if(*p == NULL) return LISTA_VACIA;
     tPila c;
