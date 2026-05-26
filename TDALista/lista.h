@@ -64,4 +64,6 @@ tNodo** buscarMenor (tLista* p, tComp CMP);
 void _mostrarListaOrdenInversoRec (tLista* p, imp IMP);
 int mostrarListaOrdenInverso(tLista* p, imp IMP);
 
+int mostrarListaOrdenInversoConPila (tLista* p, imp IMP);
+
 #endif // LISTA_H_
