@@ -1,0 +1,258 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Página-1" id="-BgMKk1Md8sypDI2qqMp">
+    <mxGraphModel dx="1406" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="60" width="90" x="230" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Raiz" vertex="1">
+          <mxGeometry height="30" width="60" x="245" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--3" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--4" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="240" y="100" as="sourcePoint" />
+            <mxPoint x="220" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--4" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="150" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--5" edge="1" parent="1" source="2-XUT0oZ3bGEiFmJ63H--8" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--6" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="175" y="320" as="sourcePoint" />
+            <mxPoint x="150" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--6" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="60" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--7" edge="1" parent="1" source="2-XUT0oZ3bGEiFmJ63H--4" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--8" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="195" y="210" as="sourcePoint" />
+            <mxPoint x="170" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--8" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="100" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Hoja" vertex="1">
+          <mxGeometry height="30" width="60" x="60" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Un arbol va a ser eneario dependiendo la cantidad maxima de hijos que tenga" vertex="1">
+          <mxGeometry height="30" width="440" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="A lo sumo, un nodo puede tener un padre (la raíz no tiene padre" vertex="1">
+          <mxGeometry height="30" width="380" x="480" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Vamos a trabajar con arboles binarios. Estos&amp;nbsp; tienen, como máximo, dos hijos" vertex="1">
+          <mxGeometry height="30" width="430" x="480" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--13" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="290" y="110" as="sourcePoint" />
+            <mxPoint x="320" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--14" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="300" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Hoja" vertex="1">
+          <mxGeometry height="30" width="60" x="300" y="185" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--17" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Arboles binarios de Expresion. Estos muestran expresiones aritmeticas" vertex="1">
+          <mxGeometry height="30" width="470" x="450" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--18" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Los nodos que no son hojas son los operadores (+, -, ., /)&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="350" x="490" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Los nodos hojas son los operandos" vertex="1">
+          <mxGeometry height="30" width="290" x="500" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--20" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;*&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="50" x="710" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--21" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.222;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="2-XUT0oZ3bGEiFmJ63H--24" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="755" y="255" as="sourcePoint" />
+            <mxPoint x="805" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--22" edge="1" parent="1" source="2-XUT0oZ3bGEiFmJ63H--20" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.02;exitY=0.68;exitDx=0;exitDy=0;exitPerimeter=0;" target="2-XUT0oZ3bGEiFmJ63H--23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="705" y="255" as="sourcePoint" />
+            <mxPoint x="679.030293963292" y="298.1789668723218" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--23" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;+&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="610" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--24" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;/&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="820" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--26" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="657.5" y="350" as="sourcePoint" />
+            <mxPoint x="707.5" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--27" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--28" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="607.5" y="350" as="sourcePoint" />
+            <mxPoint x="557.5" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--28" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;3&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="547.5" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--29" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;4&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="697.5" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--31" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="870" y="360" as="sourcePoint" />
+            <mxPoint x="920" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--32" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--33" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="820" y="360" as="sourcePoint" />
+            <mxPoint x="770" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--33" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;5&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="760" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--34" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;-&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="910" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--36" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="960" y="440" as="sourcePoint" />
+            <mxPoint x="1010" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--37" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" target="2-XUT0oZ3bGEiFmJ63H--38" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="910" y="440" as="sourcePoint" />
+            <mxPoint x="860" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--38" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;6&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="850" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--39" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;2&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="45" x="1000" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--40" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;( 3 + 4) * [ 5 / (6 - 2) ]&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="470" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--41" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="IZQUIERDA" vertex="1">
+          <mxGeometry height="30" width="110" x="500" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DERECHA" vertex="1">
+          <mxGeometry height="30" width="60" x="840" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Entro por la raíz y siempre voy a la izquierda" vertex="1">
+          <mxGeometry height="30" width="240" x="390" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--44" edge="1" parent="1" style="curved=1;endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="190" />
+              <mxPoint x="790" y="200" />
+              <mxPoint x="770" y="180" />
+            </Array>
+            <mxPoint x="780" y="200" as="sourcePoint" />
+            <mxPoint x="740" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Las veces que voy a tocar un nodo son N + 1. Siendo N la cantidad maxima de hijos que puede tener.&lt;div&gt;En este caso, toco a los nodos 3 veces.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="470" x="132.5" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Es una estructura recursiva" vertex="1">
+          <mxGeometry height="30" width="370" x="170" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Cada nodo se cree raíz y no sabe que es parte de otro arbol. Se consideran arboles por si solos.&lt;div&gt;Aunque haya un solo nodo, se le considera arbol.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="340" x="190" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--48" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="El caso base seria que la Raíz es NULL" vertex="1">
+          <mxGeometry height="30" width="270" x="225" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--50" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="EXPRESION" vertex="1">
+          <mxGeometry height="30" width="177.5" x="875" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--51" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;R I D = Pre Orden. Apenas toco el nodo, lo proceso.&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;I R D = In Orden. Proceso el nodo la segunda vez que lo toco.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;I D R = Pos Orden. Proceso el nodo la ultima vez que lo toco.&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="65" width="605" x="840" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--52" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="En el arbol no guardo los parentesis ni corchetes" vertex="1">
+          <mxGeometry height="30" width="330" x="895" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--53" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No todo recorrido me sirve para lo mismo" vertex="1">
+          <mxGeometry height="30" width="367.5" x="927.5" y="215" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--54" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="NODO" vertex="1">
+          <mxGeometry height="30" width="60" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--55" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="180" width="180" x="50" y="645" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--56" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="2-XUT0oZ3bGEiFmJ63H--55" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="140" y="825" as="sourcePoint" />
+            <mxPoint x="200" y="775" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--57" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="50" y="735" as="sourcePoint" />
+            <mxPoint x="230" y="735" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--58" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="INFO" vertex="1">
+          <mxGeometry height="30" width="60" x="70" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--59" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="TAMAÑO" vertex="1">
+          <mxGeometry height="30" width="60" x="150" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--60" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="IZQUIERDA" vertex="1">
+          <mxGeometry height="30" width="60" x="70" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--61" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="DERECHA" vertex="1">
+          <mxGeometry height="30" width="60" x="150" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--62" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Siempre voy a ver al nodo desde el puntero que apunta al nodo.&amp;nbsp;&lt;div&gt;No desde el nodo.&lt;/div&gt;&lt;div&gt;La unica estructura en la que no sucede en la lista doblemente enlazada&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="390" x="260" y="695" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--63" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Un arbol Unario es una lista simple&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="355" x="160" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--64" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Arbol Binario de Busqueda (ABB)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="300" x="790" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--65" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Si no hay nada, lo pongo" vertex="1">
+          <mxGeometry height="30" width="200" x="832.5" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--66" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="No acepta duplicados porque esta optimizado para la busqueda. El arbol binario comun si puede tener duplicados" vertex="1">
+          <mxGeometry height="30" width="403" x="850" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--67" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Meto un numero (2 por ejemplo) y cuando meta otro numero, si es mayor va a la derecha y si es menor va para la izquierda" vertex="1">
+          <mxGeometry height="30" width="410" x="860" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--68" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Insertar en orden no es una bunea idea en una ABB. Quedaria como una lista simple" vertex="1">
+          <mxGeometry height="30" width="300" x="860" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--69" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="La altura es el nivel + 1&lt;div&gt;Si no tengo arbol, el nuvel es 0&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="320" x="960" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--70" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="El nivel cuenta las aristas, la altura cuenta los nodos" vertex="1">
+          <mxGeometry height="30" width="200" x="1035" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="2-XUT0oZ3bGEiFmJ63H--71" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="La funcion es la misma, pero en una empiezo a contar desde 0 y en la otra desde -1" vertex="1">
+          <mxGeometry height="30" width="300" x="1000" y="420" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
