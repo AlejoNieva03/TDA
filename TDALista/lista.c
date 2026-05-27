@@ -369,12 +369,16 @@ int mostrarListaOrdenInversoConPila(tLista* p, imp IMP)
     if(*p == NULL) return LISTA_VACIA;
     tPila c;
     crearPila(&c);
-    unsigned tamElem = (*p)->tamInfo;
-    while(*p)
+    unsigned tamElem = sizeof(void*);
+    int ret = ponerEnPila(&c,*p,tamElem);
+    p = &(*p)->sig;
+    while(*p && ret != SIN_MEM)
     {
-        ponerEnPila(&c,(*p)->info,(*p)->tamInfo);
+        ret = ponerEnPila(&c,*p,tamElem);
         p = &(*p)->sig;
     }
+    if(ret == SIN_MEM) return SIN_MEM;
+
     void* dato = malloc(tamElem);
     if(dato == NULL)
     {
@@ -383,7 +387,7 @@ int mostrarListaOrdenInversoConPila(tLista* p, imp IMP)
     }
     while(desapilar(&c,dato,tamElem) != PILA_VACIA)
     {
-        IMP(dato);
+        IMP(((tNodo*)dato)->info);
     }
     free(dato);
    /// vaciarPila(&c); NO HACE FALTA PORQUE LA PILA YA SE VACIO EN EL WHILE ANTERIOR
