@@ -155,3 +155,54 @@ void _contarTodosLosNodosHojas (tArbol* pr, int* cont)
     _contarTodosLosNodosHojas(&(*pr)->Izq,cont);
     _contarTodosLosNodosHojas(&(*pr)->Der,cont);
 }
+
+int contarTodosLosNodosConHijos(tArbol *pr)
+{
+    int nodos = 0;
+    _contarTodosLosNodosConHijos(pr,&nodos);
+    return nodos;
+}
+void _contarTodosLosNodosConHijos (tArbol* pr, int* cont)
+{
+    if(*pr == NULL) return;
+    if((*pr)->Izq || (*pr)->Der)
+    {
+        *cont += 1;
+    }
+      _contarTodosLosNodosConHijos(&(*pr)->Izq,cont);
+      _contarTodosLosNodosConHijos(&(*pr)->Der,cont);
+}
+
+int contarTodosLosNodosConHijosPorIzq(tArbol *pr)
+{
+    int nodos = 0;
+    _contarTodosLosNodosConHijosPorIzq(pr,&nodos);
+    return nodos;
+}
+void _contarTodosLosNodosConHijosPorIzq (tArbol* pr, int* cont)
+{
+    if(*pr == NULL) return;
+    if((*pr)->Izq)
+    {
+        *cont += 1;
+    }
+      _contarTodosLosNodosConHijosPorIzq(&(*pr)->Izq,cont);
+      _contarTodosLosNodosConHijosPorIzq(&(*pr)->Der,cont);
+}
+
+int contarTodosLosNodosConHijosPorDer(tArbol *pr)
+{
+    int nodos = 0;
+    _contarTodosLosNodosConHijosPorDer(pr,&nodos);
+    return nodos;
+}
+void _contarTodosLosNodosConHijosPorDer (tArbol* pr, int* cont)
+{
+    if(*pr == NULL) return;
+    if((*pr)->Der)
+    {
+        *cont += 1;
+    }
+      _contarTodosLosNodosConHijosPorDer(&(*pr)->Izq,cont);
+      _contarTodosLosNodosConHijosPorDer(&(*pr)->Der,cont);
+}
