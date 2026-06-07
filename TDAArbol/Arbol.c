@@ -103,6 +103,7 @@ void _preOrden (tArbol* pr,IMP imp)
     _preOrden(&(*pr)->Izq,imp);
     _preOrden(&(*pr)->Der,imp);
 }
+
 void _InOrden (tArbol* pr, IMP imp)
 {
     if(*pr == NULL)
@@ -120,7 +121,43 @@ void _posOrden (tArbol* pr, IMP imp)
     _posOrden(&(*pr)->Der,imp);
      imp((*pr)->info); ///HAGO LA ACCION
 }
+void _posOrdenIterativo(tArbol* pr, IMP imp) ///I D R
+{
+    if(*pr)
+    {
+        if((*pr)->Izq)
+        {
+         tArbol* act = &(*pr)->Izq;
+        ///  tArbol* guardar = act;
+          while(*act)
+          {
+              tArbol* nodoAnterior = act;
+              while((*act)->Izq)
+                act = &(*act)->Izq;
+              if((*act)->Der)
+                act = &(*act)->Der;
+            if(*act == NULL) imp((*nodoAnterior)->info);
+          }
+        }
 
+        if((*pr)->Der)
+        {
+          tArbol* act = &(*pr)->Der;
+          ///tArbol* guardar = act;
+          while(*act)
+          {
+              tArbol* nodoAnterior = act;
+             while((*act)->Izq)
+                act = &(*act)->Izq;
+            if((*act)->Der)
+                act = &(*act)->Der;
+            if(*act == NULL) imp((*nodoAnterior)->info);
+          }
+        }
+        imp((*pr)->info);
+
+    }
+}
 ///EJERCICIOS
 int contarTodosLosNodos (tArbol* pr)
 {
@@ -205,4 +242,220 @@ void _contarTodosLosNodosConHijosPorDer (tArbol* pr, int* cont)
     }
       _contarTodosLosNodosConHijosPorDer(&(*pr)->Izq,cont);
       _contarTodosLosNodosConHijosPorDer(&(*pr)->Der,cont);
+}
+
+int contarTodosLosNodosConHijosSoloPorIzq(tArbol *pr)
+{
+    if(*pr == NULL) return 0;
+    if((*pr)->Izq && !(*pr)->Der)
+        return 1 + contarTodosLosNodosConHijosSoloPorIzq((&(*pr)->Izq));
+
+    return contarTodosLosNodosConHijosSoloPorIzq(&(*pr)->Izq) + contarTodosLosNodosConHijosSoloPorIzq(&(*pr)->Der);
+}
+int contarTodosLosNodosConHijosSoloPorDer(tArbol *pr)
+{
+    if(*pr == NULL) return 0;
+    if(!(*pr)->Izq && (*pr)->Der)
+        return 1 + contarTodosLosNodosConHijosSoloPorDer((&(*pr)->Der));
+
+    return contarTodosLosNodosConHijosSoloPorDer(&(*pr)->Izq) + contarTodosLosNodosConHijosSoloPorDer(&(*pr)->Der);
+}
+int contarAltura (tArbol* pr)
+{
+    if(*pr == NULL) return 0;
+
+    int alturaIzq = contarAltura(&(*pr)->Izq);
+    int alturaDer = contarAltura(&(*pr)->Der);
+
+   return 1 + ((alturaIzq > alturaDer) ? alturaIzq : alturaDer);
+}
+int contarNivel (tArbol* pr)
+{
+    int  nivel = contarAltura(pr);
+    nivel = (nivel)? (nivel-1) : nivel; ///ES CLAVE SABER QUE CUALQUIER NUMERO DISTINTO DE 0 SE TOMA COMO VERDADERO Y EL 0 SE TOMA COMO FALSO
+    return nivel;
+}
+void buscarDatoPorNivel (tArbol* pr, int nivel, ACC accion)
+{
+    _buscarDatoPorNivel(pr,nivel,0,accion);
+}
+void _buscarDatoPorNivel (tArbol* pr, int nivel, int Actnivel, ACC accion)
+{
+    if(*pr == NULL || nivel < 0 || nivel < Actnivel) return;
+
+    if(nivel == Actnivel)
+    {
+        accion((*pr)->info);
+    }
+
+    _buscarDatoPorNivel(&(*pr)->Izq,nivel,Actnivel + 1, accion);
+    _buscarDatoPorNivel(&(*pr)->Der,nivel,Actnivel + 1, accion);
+}
+int buscarEnArbol(const tArbol* pr,void* dato, unsigned tamElem,CMP cmp)
+{
+    if(*pr == NULL) return CLAVE_NO_ENCONTRADA;
+    int ret = cmp(dato,(*pr)->info);
+    if(ret == 0)
+    {
+     memcpy(dato,(*pr)->info,tamElem > (*pr)->tamElem? (*pr)->tamElem : tamElem);
+     return CLAVE_ENCONTRADA;
+    }
+    if(ret > 0)
+        return buscarEnArbol(&(*pr)->Der,dato,tamElem,cmp);
+    else
+        return buscarEnArbol(&(*pr)->Izq,dato,tamElem,cmp);
+
+}
+void podarHojas (tArbol* pr)
+{
+    if(*pr == NULL) return;
+
+    if(!(*pr)->Izq && !(*pr)->Der)
+    {
+        free((*pr)->info);
+        free(*pr);
+        *pr = NULL;
+        return;
+    }
+    podarHojas(&(*pr)->Izq);
+    podarHojas(&(*pr)->Der);
+}
+
+void destruirArbol (tArbol* pr)
+{
+    if(*pr == NULL)
+        return;
+    destruirArbol(&(*pr)->Izq);
+    destruirArbol(&(*pr)->Der);
+    free((*pr)->info);
+    free(*pr);
+    *pr = NULL;
+}
+int cargarArchivoDesordenadoArbol(tArbol* pr, char* nombrArch,unsigned tamElem, CMP cmp, carIndice cargar)
+{
+    FILE* arch = fopen(nombrArch,"rb");
+    if(arch == NULL)
+    {
+        puts("No se pudo abrir el archivo");
+        return ERROR_ARCHIVO;
+    }
+    void* dato = malloc(tamElem);
+    if(dato == NULL)
+    {
+        fclose(arch);
+        return SIN_MEM;
+    }
+
+    int offset = 0;
+    tIndice indice;
+    while(fread(dato,tamElem,1,arch))
+    {
+        cargar(dato,&indice);
+        indice.indiceRegistro = offset;
+        InsertarArbolBinario(pr,&indice,sizeof(tIndice),cmp);
+        offset++;
+    }
+
+    fclose(arch);
+    free(dato);
+    return TODO_OK;
+
+}
+
+int cargarArbolArchivoOrdenado (tArbol* pr, char* nuevoArch, char* archivoViejo, unsigned tamElem)
+{
+    FILE* viejo = fopen(archivoViejo,"rb");
+    if(viejo == NULL)
+    {
+        puts("No se pudo abrir el archivo");
+        return ERROR_ARCHIVO;
+    }
+    FILE* nuevo = fopen(nuevoArch,"wb");
+    if(nuevo == NULL)
+    {
+        fclose(viejo);
+        puts("No se pudo abrir el archivo");
+        return ERROR_ARCHIVO;
+    }
+    tIndice indice;
+    void* dato = malloc(tamElem);
+    if(dato == NULL)
+    {
+        fclose(viejo);
+        fclose(nuevo);
+        return SIN_MEM;
+    }
+    _cargarArbolArchivoOrdenado(pr,nuevo,viejo,&indice,dato,tamElem);
+    fclose(viejo);
+    fclose(nuevo);
+    free(dato);
+    remove(archivoViejo);
+    rename(nuevoArch,archivoViejo);
+    return TODO_OK;
+}
+void _cargarArbolArchivoOrdenado (tArbol* pr, FILE* nuevo, FILE* viejo, tIndice* indice, void* dato,unsigned tamElem)
+{
+    if(*pr == NULL)
+        return;
+    _cargarArbolArchivoOrdenado(&(*pr)->Izq,nuevo,viejo,indice,dato,tamElem);
+    indice = (tIndice*)((*pr)->info);
+    fseek(viejo,indice->indiceRegistro*tamElem,0);
+    fread(dato,tamElem,1,viejo);
+    fwrite(dato,tamElem,1,nuevo);
+    _cargarArbolArchivoOrdenado(&(*pr)->Der,nuevo,viejo,indice,dato,tamElem);
+
+}
+int balancearArbol(char* nombrArch, tArbol* pr)
+{
+    FILE* arch = fopen(nombrArch,"rb");
+    if(arch == NULL)
+    {
+        puts("No se pudo abrir el archivo");
+        return ERROR_ARCHIVO;
+    }
+    fseek(arch,0,SEEK_END); ///ME MUEVO ALA FINAL;
+    int canBytes = ftell(arch);
+    int cantRegistros = canBytes/sizeof(tRegistro);
+    _balancearArbol(arch,pr,0,cantRegistros);
+    fclose(arch);
+    return TODO_OK;
+}
+void _balancearArbol (FILE* Arch, tArbol* pr, int ini, int fin)
+{
+    if(ini > fin)
+        return;
+    size_t medio = (ini + fin)/2;
+    fseek(Arch,medio * sizeof(tRegistro),0); ///ME MUEVO
+    tRegistro reg;
+    tIndice idx;
+    fread(&reg,sizeof(tRegistro),1,Arch);
+    idx.clave.dni = reg.dni;
+    idx.indiceRegistro = medio;
+    InsertarArbolBinario(pr,&idx,sizeof(tIndice),cmpIndice);
+     _balancearArbol(Arch,pr,ini,medio-1);
+     _balancearArbol(Arch,pr,medio+1,fin);
+
+}
+int cmpIndice (const void* e1, const void* e2)
+{
+    tIndice* i1 = (tIndice*)e1;
+    tIndice* i2 = (tIndice*)e2;
+    return i1->clave.dni - i2->clave.dni;
+}
+int buscarEnArchivoConIndice(FILE *fp, const tArbol *pa, tRegistro* reg)
+{
+     int claveEncontrada;
+     tIndice idx;
+     idx.clave.dni = reg->dni;
+    claveEncontrada = buscarEnArbol(pa,&idx,sizeof(tIndice),cmpIndice);
+
+   if(claveEncontrada == CLAVE_ENCONTRADA)
+    {
+        fseek(fp, idx.indiceRegistro * sizeof(tRegistro), SEEK_SET);
+        fread(reg, sizeof(tRegistro), 1, fp);
+        return CLAVE_ENCONTRADA;
+   }
+    else
+      {           return CLAVE_NO_ENCONTRADA;
+    }
 }
