@@ -21,34 +21,46 @@ int mostrarArchivo (char* nombrArch);
 int main(int argc, char* argv[])
 {
     tArbol arbol;
-///    int num = 5;
+    int num = 5;
     crearArbol(&arbol);
-///    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//    puts("");
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
 //        printf("La altura del arbol es %d\n",contarAltura(&arbol));
 //    printf("El nivel del arbol es %d\n",contarNivel(&arbol));
-//
-//    num = 3;
-//    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//    puts("");
-//    num = 7;
-//    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//    puts("");
-//    num = 1;
-//    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//        puts("");
-//     num = 8;
-//    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//    puts("");
-//     num = 6;
-//    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-//    puts("");
+
+    num = 3;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+    num = 7;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+    num = 1;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+        puts("");
+     num = 8;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+     num = 6;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+         num = 2;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+         num = 9;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+         num = 10;
+    InsertarArbolBinarioIterativo(&arbol,&num,sizeof(num),cmpInt);
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
 //    printf("La cantidad de nodos es %d\n",contarTodosLosNodos(&arbol));
 //    printf("La cantidad de nodos hojas es %d\n",contarTodosLosNodosHojas(&arbol));
 //    printf("La cantidad de nodos con hijos es %d\n",contarTodosLosNodosConHijos(&arbol));
@@ -64,45 +76,57 @@ int main(int argc, char* argv[])
 //
 //    podarHojas(&arbol);
 //    puts("Podando hojas");
+ num = 3;
+  eliminarNodo(&arbol,&num,sizeof(num),cmpInt);
+  puts("Se elimino el registro:");
+  impInt(&num);
+  puts("");
+    recorrerArbol(&arbol,POS_ORDEN,impInt);
+    puts("");
+
+
+    destruirArbol(&arbol);
+    puts("\nVaciando Arbol...");
 //    recorrerArbol(&arbol,POS_ORDEN,impInt);
+//   cargarArchivo(argv[1]);
+//   cargarArchivoDesordenadoArbol(&arbol,argv[1],sizeof(tRegistro),cmpIndice,CargarReg);
+//   recorrerArbol(&arbol,PRE_ORDEN,impIndice);
+//   mostrarArchivo(argv[1]);
+//  puts("");puts("");
+//  cargarArbolArchivoOrdenado(&arbol,argv[2],argv[1],sizeof(tRegistro));
+//  mostrarArchivo(argv[1]);
+//  puts("");puts("");
+//  tIndice reg;
+//  reg.clave.dni = 46556068;
+//  eliminarNodo(&arbol,&reg,sizeof(tIndice),cmpIndice);
+//  puts("Se elimino el registro:");
+//  impIndice(&reg);
+//  recorrerArbol(&arbol,PRE_ORDEN,impIndice);
+
+
+//tArbol indice;
+//crearArbol(&indice);
 //
+//  balancearArbol(argv[1],&indice);
+//   recorrerArbol(&indice,PRE_ORDEN,impIndice);
+//  puts("");puts("");
+//  FILE* arch = fopen(argv[1],"rb");
+//  if(arch == NULL)
+//    return SIN_MEM;
+//  tRegistro reg;
+//  reg.dni = 6405637;
+//  if(buscarEnArchivoConIndice(arch,&indice,&reg) == CLAVE_ENCONTRADA)
+//  {
+//       printf("%-8s %-4s %-*s\n","DNI", "SEXO",
+//       TAM_NOMBRE,
+//       "NOMBRE Y APELLIDO");
+//        impReg(&reg);
+//  }
+//  else
+//    printf("El DNI: %-8d no existe en el archivo\n",reg.dni);
 //
-//    destruirArbol(&arbol);
-//    puts("\nVaciando Arbol...");
-//    recorrerArbol(&arbol,POS_ORDEN,impInt);
-   cargarArchivo(argv[1]);
-   cargarArchivoDesordenadoArbol(&arbol,argv[1],sizeof(tRegistro),cmpIndice,CargarReg);
-   recorrerArbol(&arbol,PRE_ORDEN,impIndice);
-  /// mostrarArchivo(argv[1]);
-  puts("");puts("");
-  cargarArbolArchivoOrdenado(&arbol,argv[2],argv[1],sizeof(tRegistro));
-  mostrarArchivo(argv[1]);
-  puts("");puts("");
-     destruirArbol(&arbol);
-
-tArbol indice;
-crearArbol(&indice);
-
-  balancearArbol(argv[1],&indice);
-   recorrerArbol(&indice,PRE_ORDEN,impIndice);
-  puts("");puts("");
-  FILE* arch = fopen(argv[1],"rb");
-  if(arch == NULL)
-    return SIN_MEM;
-  tRegistro reg;
-  reg.dni = 6405637;
-  if(buscarEnArchivoConIndice(arch,&indice,&reg) == CLAVE_ENCONTRADA)
-  {
-       printf("%-8s %-4s %-*s\n","DNI", "SEXO",
-       TAM_NOMBRE,
-       "NOMBRE Y APELLIDO");
-        impReg(&reg);
-  }
-  else
-    printf("El DNI: %-8d no existe en el archivo\n",reg.dni);
-
-   destruirArbol(&indice);
-   fclose(arch);
+//   destruirArbol(&indice);
+//   fclose(arch);
     return 0;
 }
 int cmpInt (const void* e1,const void* e2)
@@ -180,3 +204,4 @@ int mostrarArchivo (char* nombrArch)
     fclose(arch);
     return TODO_OK;
 }
+
