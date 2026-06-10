@@ -158,6 +158,99 @@ void _posOrdenIterativo(tArbol* pr, IMP imp) ///I D R
 
     }
 }
+int eliminarNodo (tArbol* pr,void* clave, unsigned tamElem, CMP cmp)
+{
+    if(*pr == NULL) return ARBOL_VACIO;
+    tArbol* nodoBuscado = _buscarNodoEnArbol(pr,clave,cmp); ///BUSCO LA DIRECCION DEL NODO
+
+    if(nodoBuscado == NULL) return CLAVE_NO_ENCONTRADA;
+
+    int alturaPorIzq = contarAltura(&(*nodoBuscado)->Izq);
+    int alturaPorDer = contarAltura(&(*nodoBuscado)->Der);
+
+    tNodo** nodoAnterior = (alturaPorIzq > alturaPorDer ? _buscarMayorNodo(nodoBuscado) : _buscarMenorNodo(nodoBuscado));
+    memcpy(clave,(*nodoBuscado)->info,tamElem > (*nodoBuscado)->tamElem? (*nodoBuscado)->tamElem : tamElem);
+
+
+    if(*nodoAnterior)
+    {
+
+      if(alturaPorIzq > alturaPorDer)
+      {
+        tNodo** elim = &(*nodoAnterior)->Der;
+        (*nodoAnterior)->Der = (*elim)->Izq;
+        free((*elim)->info);
+        free(*elim);
+
+      }
+      else
+       {
+
+        tNodo** elim = &(*nodoAnterior)->Izq;
+        (*nodoAnterior)->Izq = (*elim)->Der;
+        free((*elim)->info);
+        free(*elim);
+
+       }
+
+    }
+    else ///ES HOJA
+    {
+        free((*nodoBuscado)->info);
+        free(*nodoBuscado);
+        *nodoBuscado = NULL;
+    }
+
+
+    return CLAVE_ENCONTRADA;
+}
+tNodo** _buscarNodoEnArbol(tArbol* pr,void* clave,CMP cmp)
+{
+    if(*pr == NULL) return NULL;
+    int ret = cmp(clave,(*pr)->info);
+    if(ret == 0)
+    {
+     return pr;
+    }
+    if(ret > 0)
+        return _buscarNodoEnArbol(&(*pr)->Der,clave,cmp);
+    else
+        return _buscarNodoEnArbol(&(*pr)->Izq,clave,cmp);
+
+}
+tNodo** _buscarMayorNodo (tArbol* pr)
+{
+    tNodo** ant = &(*pr)->Izq;
+    if(*ant)
+    {
+
+    tNodo** Act = &(*ant)->Der;
+    while((*Act)->Der)
+    {
+        ant = Act;
+        Act = &(*Act)->Der;
+    }
+
+    }
+
+    return ant;
+}
+tArbol* _buscarMenorNodo (tArbol* pr)
+{
+    tNodo** ant = &(*pr)->Der;
+    if(*ant)
+    {
+        tNodo** Act = &(*ant)->Izq;
+     while((*Act)->Izq)
+    {
+        ant = Act;
+        Act = &(*Act)->Izq;
+    }
+   }
+
+    return ant;
+
+}
 ///EJERCICIOS
 int contarTodosLosNodos (tArbol* pr)
 {
@@ -456,6 +549,7 @@ int buscarEnArchivoConIndice(FILE *fp, const tArbol *pa, tRegistro* reg)
         return CLAVE_ENCONTRADA;
    }
     else
-      {           return CLAVE_NO_ENCONTRADA;
+      {
+          return CLAVE_NO_ENCONTRADA;
     }
 }
