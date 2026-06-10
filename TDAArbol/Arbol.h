@@ -13,6 +13,7 @@
 #define DUPLICADO 0
 #define ERROR_ARCHIVO -888
 
+#define ARBOL_VACIO -1
 
 
 typedef struct sNodo
@@ -69,8 +70,14 @@ void buscarDatoPorNivel (tArbol* pr, int nivel, ACC accion);
 int buscarEnArbol(const tArbol* pr,void*dato, unsigned tamElem,CMP cmp);
 void _buscarDatoPorNivel (tArbol* pr, int nivel, int Actnivel, ACC accion);
 
+
 void destruirArbol (tArbol* pr); ///DEBE SER EN POS ORDEN
 void podarHojas (tArbol* pr); ///DEBE SER EN PRE ORDEN
+
+int eliminarNodo (tArbol* pr,void* clave, unsigned tamElem, CMP cmp);
+tArbol* _buscarNodoEnArbol(tArbol* pr,void* clave,CMP cmp);
+tNodo** _buscarMayorNodo (tArbol* pr);
+tNodo** _buscarMenorNodo (tArbol* pr);
 
 
 ///EJERCICIOS CON ARCHIVOS
