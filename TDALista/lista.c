@@ -393,3 +393,28 @@ int mostrarListaOrdenInversoConPila(tLista* p, imp IMP)
    /// vaciarPila(&c); NO HACE FALTA PORQUE LA PILA YA SE VACIO EN EL WHILE ANTERIOR
     return TODO_OK;
 }
+void invertirLista(tLista* p)
+{
+    tNodo* actual=*p, *anterior=NULL, *siguiente=NULL;
+    while(actual)
+    {
+        siguiente=actual->sig;
+        actual->sig=anterior;
+        anterior=actual;
+        actual=siguiente;
+    }
+    *p=anterior;
+}
+
+void invertirListaRec(tLista* p)
+{
+    if(!(*p)->sig)
+        return;
+    tNodo* resto=(*p)->sig;
+    invertirLista(&resto);
+
+    (*p)->sig->sig=*p;
+    (*p)->sig=NULL;
+
+    *p=resto;
+}
